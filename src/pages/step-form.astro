@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import StepForm from "../components/step-form/StepForm.astro";
+
+import "swiper/css";
+---
+
+<Layout title="Step form">
+  <StepForm />
+</Layout>
+
+<style lang="scss">
+  @import "../styles/settings/variables";
+
+  body {
+    background: $color-zircon;
+  }
+
+  main {
+    @media screen and (min-width: 1024px) {
+    }
+  }
+</style>

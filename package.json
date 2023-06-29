@@ -1,0 +1,19 @@
+{
+    "name": "step-form",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev --host 0.0.0.0",
+        "start": "astro dev --host 0.0.0.0",
+        "build": "astro build",
+        "preview": "astro preview --host 0.0.0.0",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "astro": "^2.7.1",
+        "swiper": "^9.4.1"
+    },
+    "devDependencies": {
+        "sass": "^1.63.6"
+    }
+}

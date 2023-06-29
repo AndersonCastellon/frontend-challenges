@@ -1,0 +1,72 @@
+@import '../settings/variables';
+@import '../settings/fonts';
+
+
+.validate__section {
+  background-color: #d5d5d5;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+}
+
+.validate__section--title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+  color: $color-black;
+  text-align: center;
+
+  @media screen and (min-width: 600px) {
+    font-size: 2rem;
+  }
+}
+
+.validate__section label {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.validate__section input[type="text"] {
+  background-color: $color-white;
+  border: 1px solid $color-black;
+  border-radius: 5px;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 2rem;
+  padding: 0 10px;
+}
+
+.wrapper-color {
+  max-width: 411px;
+  padding: 2rem;
+  width: 100%;
+}
+
+.validate__section input[type="submit"] {
+  background-color: $color-black;
+  border: 1px solid $color-black;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 $color-black;
+  color: $color-white;
+  display: block;
+  font-weight: bold;
+  font-size: 15px;
+  height: 40px;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 0 10px;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
+  width: 150px;
+  cursor: pointer;
+}
+
+.validate__section input[type="submit"]:hover {
+  --hover-color: #222121;
+  border-color: var(--hover-color);
+  background-color: var(--hover-color);
+}

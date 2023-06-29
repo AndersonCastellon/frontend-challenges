@@ -1,0 +1,31 @@
+---
+import "../styles/style.scss";
+
+export interface Props {
+  title: string;
+  pageClass?: string;
+  pageId?: string;
+}
+
+const { title, pageClass = "", pageId = "" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{title}</title>
+  </head>
+  <body class={pageClass}>
+    <main class="main">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script src="../scripts/main.ts"></script>
+
+<style lang="scss">
+  .main {
+    height: 100%;
+  }
+</style>

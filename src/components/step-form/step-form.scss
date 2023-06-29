@@ -1,0 +1,296 @@
+@import '../../styles//settings/variables';
+
+:root {
+
+    --form-steps-height: 10.75rem;
+    --form-container-max-width: calc(100% - 2rem);
+    --steps-container-max-width: 19.125rem;
+
+    @media screen and (min-width: 600px) {
+        --form-container-max-width: 35.5rem;
+    }
+}
+
+.step-form {
+
+    height: inherit;
+    width: 100%;
+
+    @media screen and (min-width: 1024px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .step-form__inner {
+        height: inherit;
+
+        @media screen and (min-width: 1024px) {
+            max-width: 58.75rem;
+            height: 37.5rem;
+            box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.10);
+            border-radius: 1.5625rem;
+        }
+
+        .step-form__wrapper {
+            height: inherit;
+
+            @media screen and (min-width: 1024px) {
+                display: flex;
+                flex-direction: row;
+                border-radius: inherit;
+                overflow: hidden;
+            }
+        }
+    }
+
+    .step-form__steps-container {
+
+        @media screen and (min-width: 1024px) {
+            width: 100%;
+            max-width: var(--steps-container-max-width);
+
+            flex: 1 0 auto;
+            padding: 1rem;
+            background: $color-white;
+        }
+
+        .step-form__steps {
+            background-image: url("/assets/images/bg-sidebar-mobile.svg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: left;
+
+            width: 100%;
+            height: var(--form-steps-height);
+
+            @media screen and (min-width: 1024px) {
+                height: 100%;
+                background-image: url("/assets/images/bg-sidebar-desktop.svg");
+
+                padding-left: 2rem;
+                padding-right: 2rem;
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+
+            .steps {
+                display: flex;
+                flex-direction: row;
+
+                justify-content: center;
+
+                padding-top: 2rem;
+
+                .step {
+                    &:not(:last-of-type) {
+                        margin-right: 1rem;
+
+                        @media screen and (min-width: 1024px) {
+                            margin-right: 0;
+                            margin-bottom: 2rem;
+                        }
+                    }
+
+                    .step-wrapper {
+                        display: flex;
+                        flex-direction: row;
+
+                        @media screen and (min-width: 1024px) {
+                            align-items: center;
+                        }
+
+                        .step__number {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            width: 2.0625rem;
+                            height: 2.0625rem;
+
+                            outline: 1px solid $color-white;
+
+                            border-radius: 50%;
+
+                            span {
+                                font-size: .875rem;
+                                color: $color-white;
+                                font-weight: 700;
+                                text-transform: uppercase;
+                                user-select: none;
+
+                            }
+                        }
+
+                        .step__info {
+                            display: none;
+                            margin-left: 1rem;
+
+                            small,
+                            p {
+                                text-transform: uppercase;
+                            }
+
+                            small {
+                                color: $color-light-blue;
+                                font-size: .75rem;
+                                font-weight: 400;
+                            }
+
+                            p {
+                                color: $color-white;
+                                font-size: .875rem;
+                                font-weight: 700;
+                                letter-spacing: 1px;
+
+                            }
+
+                            @media screen and (min-width: 1024px) {
+                                display: block;
+                            }
+                        }
+                    }
+
+                    &--active {
+                        .step-wrapper {
+                            .step__number {
+                                background: $color-sky-blue;
+
+                                span {
+                                    color: $color-denim;
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+                @media screen and (min-width: 1024px) {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+
+    .step-form__form-container {
+
+        display: flex;
+        flex-direction: column;
+
+        height: calc(100% - var(--form-steps-height));
+
+        @media screen and (min-width: 1024px) {
+            height: auto;
+            width: calc(100% - var(--steps-container-max-width));
+            flex: 0 0 auto;
+
+            background: $color-white;
+
+            padding-top: 3.5rem;
+            padding-left: 6.25rem;
+            padding-right: 6.25rem;
+        }
+
+        .form__container {
+            width: 100%;
+            max-width: var(--form-container-max-width);
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: .625rem;
+            background: $color-white;
+            box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.10);
+
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+
+            margin-top: -4.5rem;
+
+            @media screen and (min-width: 1024px) {
+                margin-top: 0;
+                max-width: initial;
+
+                border-radius: 0;
+                max-width: initial;
+                box-shadow: none;
+
+                padding: 0;
+            }
+        }
+
+        .form__swiper {
+            overflow: hidden;
+            padding: 1px;
+        }
+
+        .form__step {
+
+            .form__step-header {
+
+                margin-bottom: 1.375rem;
+
+                .form__step-title {
+                    color: $color-denim;
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                }
+
+                .form__step-description {
+                    color: $color-cool-gray;
+                    font-size: 1rem;
+                    line-height: 1.5625rem;
+                }
+            }
+        }
+
+        .actions__container {
+            --actions-container-padding: calc(calc(100% - var(--form-container-max-width)) / 2);
+            display: flex;
+            height: 4.5rem;
+            background: $color-white;
+            box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.10);
+
+            margin-top: auto;
+
+            padding-left: var(--actions-container-padding);
+            padding-right: var(--actions-container-padding);
+            justify-content: space-between;
+            align-items: center;
+
+            @media screen and (min-width: 1024px) {
+                padding: 0;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.button {
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: normal;
+    color: $color-cool-gray;
+
+    height: 2.5rem;
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+        color: $color-denim;
+    }
+
+    &--primary {
+        color: $color-white;
+        border-radius: .25rem;
+        background: $color-denim;
+
+        padding: .75rem 1rem;
+
+        &:hover,
+        &:active {
+            color: $color-white;
+            background: $color-chathams-blue;
+        }
+    }
+}
