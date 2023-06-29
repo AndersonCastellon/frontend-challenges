@@ -8,7 +8,7 @@ import "./step-form.scss";
       <div class="step-form__steps-container">
         <div class="step-form__steps">
           <ul class="steps">
-            <li class="step step--active">
+            <li class="step step--active" data-step-number="1">
               <div class="step-wrapper">
                 <div class="step__number">
                   <span>1</span>
@@ -20,7 +20,7 @@ import "./step-form.scss";
               </div>
             </li>
 
-            <li class="step">
+            <li class="step" data-step-number="2">
               <div class="step-wrapper">
                 <div class="step__number">
                   <span>2</span>
@@ -32,7 +32,7 @@ import "./step-form.scss";
               </div>
             </li>
 
-            <li class="step">
+            <li class="step" data-step-number="3">
               <div class="step-wrapper">
                 <div class="step__number">
                   <span>3</span>
@@ -44,7 +44,7 @@ import "./step-form.scss";
               </div>
             </li>
 
-            <li class="step">
+            <li class="step" data-step-number="4">
               <div class="step-wrapper">
                 <div class="step__number">
                   <span>4</span>
@@ -60,7 +60,7 @@ import "./step-form.scss";
       </div>
       <div class="step-form__form-container">
         <div class="form__container">
-          <form class="form">
+          <form class="form" id="step-form">
             <div class="form__swiper">
               <!-- Additional required wrapper -->
               <div class="swiper-wrapper">
@@ -194,8 +194,25 @@ import "./step-form.scss";
           </form>
         </div>
         <div class="actions__container">
-          <button class="button">Go Back</button>
-          <button class="button button--primary">Next Step</button>
+          <button
+            type="button"
+            data-button-type="prev"
+            class="button"
+            style="visibility: hidden;">Go Back</button
+          >
+          <button
+            type="button"
+            data-button-type="next"
+            class="button button--primary">Next Step</button
+          >
+          <input
+            type="submit"
+            data-button-type="submit"
+            class="button button--primary"
+            value="Confirm"
+            style="display: none;"
+            form="step-form"
+          />
         </div>
       </div>
     </div>

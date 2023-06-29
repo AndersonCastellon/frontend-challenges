@@ -167,6 +167,7 @@
 
                 @media screen and (min-width: 1024px) {
                     flex-direction: column;
+                    padding-top: 0;
                 }
             }
         }
@@ -274,6 +275,9 @@
 
     height: 2.5rem;
     cursor: pointer;
+
+    width: 100%;
+    max-width: 7.8125rem;
 
     &:hover,
     &:active {
