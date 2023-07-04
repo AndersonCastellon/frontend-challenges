@@ -1,0 +1,86 @@
+@import "../../styles/settings/variables";
+
+.plan-radio-button {
+    height: 4.8125rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .5rem;
+    overflow: hidden;
+    border: 1px solid $color-light-gray;
+
+    position: relative;
+
+    cursor: pointer;
+
+    &:not(:last-of-type) {
+        margin-bottom: .75rem;
+    }
+
+    &:hover,
+    &:has(input[type=radio]:checked) {
+        border-color: $color-blue-ribbon;
+        background: $color-very-light-gray;
+    }
+
+    input[type=radio] {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        &::before {
+            content: none;
+        }
+
+        z-index: 2;
+
+        border: none;
+        cursor: pointer;
+        transform: none;
+        display: block;
+    }
+
+    .plan__inner {
+        display: flex;
+        align-items: center;
+        height: inherit;
+        position: relative;
+        z-index: 1;
+
+        .plan__icon-container {
+            margin-right: .875rem;
+
+            .plan__icon {
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        .plan__content-container {
+            flex: 1 1 auto;
+
+
+            .plan__name {
+                font-size: 1rem;
+                color: $color-denim;
+                font-weight: 500;
+                margin-bottom: .4375rem;
+            }
+
+            .plan__cost {
+                font-size: .875rem;
+                font-weight: 400;
+                color: $color-cool-gray;
+                margin-bottom: .4375rem;
+            }
+
+            .plan__free {
+                color: $color-denim;
+                font-size: .75rem;
+                font-weight: 400;
+            }
+        }
+    }
+}

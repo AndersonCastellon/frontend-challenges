@@ -1,0 +1,31 @@
+---
+import "./plan-radio-button.scss";
+type Props = {
+  id: string;
+  name: string;
+  value: string;
+  icon?: string;
+  customClasses?: string;
+};
+const { id, name, value, icon, customClasses = "", ...attrs } = Astro.props;
+---
+
+<div class={`plan-radio-button ${customClasses}`} data-plan={id} {...attrs}>
+  <input type="radio" id={id} name={name} value={value} />
+  <div class="plan__inner">
+    <div class="plan__icon-container">
+      <img class="plan__icon" src={icon || ""} alt="Icon" />
+    </div>
+    <div class="plan__content-container">
+      <h1 class="plan__name" id="plan-name">
+        <slot name="plan-name">Arcade</slot>
+      </h1>
+      <p class="plan__cost" id="plan-cost">
+        <slot name="plan-cost">$9/mo</slot>
+      </p>
+      <p class="plan__free" id="free-months" style="display: none;">
+        <slot name="plan-free">2 months free</slot>
+      </p>
+    </div>
+  </div>
+</div>
