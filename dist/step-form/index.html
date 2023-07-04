@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="astro-SCKKX6R4">
+  <head>
+    <title>Step form</title>
+  <link rel="stylesheet" href="/assets/css/styles.css" /><script type="module" src="/assets/js/main.js"></script></head>
+  <body class=" astro-SCKKX6R4">
+    <main class="main astro-SCKKX6R4">
+      
+  <section class="step-form">
+  <div class="step-form__inner">
+    <div class="step-form__wrapper">
+      <div class="step-form__steps-container">
+        <div class="step-form__steps">
+          <ul class="steps">
+            <li class="step step--active" data-step-number="1">
+              <div class="step-wrapper">
+                <div class="step__number">
+                  <span>1</span>
+                </div>
+                <div class="step__info">
+                  <small>step 1</small>
+                  <p>your info</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step" data-step-number="2">
+              <div class="step-wrapper">
+                <div class="step__number">
+                  <span>2</span>
+                </div>
+                <div class="step__info">
+                  <small>step 2</small>
+                  <p>select plan</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step" data-step-number="3">
+              <div class="step-wrapper">
+                <div class="step__number">
+                  <span>3</span>
+                </div>
+                <div class="step__info">
+                  <small>step 3</small>
+                  <p>add-ons</p>
+                </div>
+              </div>
+            </li>
+
+            <li class="step" data-step-number="4">
+              <div class="step-wrapper">
+                <div class="step__number">
+                  <span>4</span>
+                </div>
+                <div class="step__info">
+                  <small>step 4</small>
+                  <p>summary</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="step-form__form-container">
+        <div class="form__container">
+          <form class="form" id="step-form">
+            <div class="form__swiper">
+              <!-- Additional required wrapper -->
+              <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                  <div class="form__step">
+                    <div class="form__step-header">
+                      <h1 class="form__step-title">Personal info</h1>
+                      <p class="form__step-description">
+                        Please provide your name, email address, and phone
+                        number.
+                      </p>
+                    </div>
+                    <div class="form__step-controls">
+                      <div class="form__control" data-touched="false" data-required="true" data-is-valid="false">
+                        <div class="form__control-header">
+                          <label for="name" class="form__control-label">Name</label>
+                          <p class="form__control-error">
+                            This field is required
+                          </p>
+                        </div>
+                        <input autocomplete="given-name" class="form__control-input" type="text" id="name" name="name" placeholder="e.g. Stephen King" required aria-required="true" pattern="^[a-zA-Z.'\- ]{1,50}$">
+                      </div>
+                      <div class="form__control" data-touched="false" data-required="true" data-is-valid="false">
+                        <div class="form__control-header">
+                          <label for="email" class="form__control-label">Email Address</label>
+                          <p class="form__control-error">
+                            This field is required
+                          </p>
+                        </div>
+                        <input autocomplete="email" class="form__control-input" type="email" id="email" name="email" placeholder="e.g. stephenking@lorem.com" required aria-required="true" pattern="^[a-zA-Z0-9._\-]{1,100}@[a-zA-Z0-9]+\.[a-zA-Z]{2,10}$">
+                      </div>
+                      <div class="form__control" data-touched="false" data-required="true" data-is-valid="false">
+                        <div class="form__control-header">
+                          <label for="phone" class="form__control-label">Phone Number</label>
+                          <p class="form__control-error">
+                            This field is required
+                          </p>
+                        </div>
+                        <input autocomplete="tel" class="form__control-input" type="tel" id="phone" name="phone" placeholder="e.g. +1 234 567 890" required aria-required="true" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="form__step">
+                    <div class="form__step-header">
+                      <h1 class="form__step-title">Select your plan</h1>
+                      <p class="form__step-description">
+                        You have the option of monthly or yearly billing.
+                      </p>
+                    </div>
+                    <div class="form__step-controls">
+                      <div class="plan-radio-button form__control" data-plan="arcade" data-touched="false" data-required="true" data-is-valid="false">
+  <input type="radio" id="arcade" name="plan" value="arcade">
+  <div class="plan__inner">
+    <div class="plan__icon-container">
+      <img class="plan__icon" src="/assets/images/icon-arcade.svg" alt="Icon">
+    </div>
+    <div class="plan__content-container">
+      <h1 class="plan__name" id="plan-name">
+        Arcade
+      </h1>
+      <p class="plan__cost" id="plan-cost">
+        $9/mo
+      </p>
+      <p class="plan__free" id="free-months" style="display: none;">
+        2 months free
+      </p>
+    </div>
+  </div>
+</div>
+                      <div class="plan-radio-button form__control" data-plan="advanced" data-touched="false" data-required="true" data-is-valid="false">
+  <input type="radio" id="advanced" name="plan" value="advanced">
+  <div class="plan__inner">
+    <div class="plan__icon-container">
+      <img class="plan__icon" src="/assets/images/icon-advanced.svg" alt="Icon">
+    </div>
+    <div class="plan__content-container">
+      <h1 class="plan__name" id="plan-name">
+        Advanced
+      </h1>
+      <p class="plan__cost" id="plan-cost">
+        $12/mo
+      </p>
+      <p class="plan__free" id="free-months" style="display: none;">
+        2 months free
+      </p>
+    </div>
+  </div>
+</div>
+                      <div class="plan-radio-button form__control" data-plan="pro" data-touched="false" data-required="true" data-is-valid="false">
+  <input type="radio" id="pro" name="plan" value="pro">
+  <div class="plan__inner">
+    <div class="plan__icon-container">
+      <img class="plan__icon" src="/assets/images/icon-pro.svg" alt="Icon">
+    </div>
+    <div class="plan__content-container">
+      <h1 class="plan__name" id="plan-name">
+        Pro
+      </h1>
+      <p class="plan__cost" id="plan-cost">
+        $15/mo
+      </p>
+      <p class="plan__free" id="free-months" style="display: none;">
+        2 months free
+      </p>
+    </div>
+  </div>
+</div>
+                      <div class="switch form__control" data-touched="false" data-required="true" data-is-valid="false">
+  <div class="switch__inner">
+    <label data-value="false" class="label label__false label--active" for="switch-billing">
+      Monthly
+    </label>
+
+    <div class="checkbox-container">
+      <input type="checkbox" id="switch-billing" name="billing">
+      <span class="slider slider--round"></span>
+    </div>
+
+    <label data-value="true" class="label label__true" for="switch-billing">
+      Yearly
+    </label>
+  </div>
+</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="form__step">
+                    <div class="form__step-header">
+                      <h1 class="form__step-title">Pick add-ons</h1>
+                      <p class="form__step-description">
+                        Add-ons help enhance your gaming experience.
+                      </p>
+                    </div>
+                    <div class="form__step-controls">
+                      <div class="checkbox " data-custom-checkbox>
+  <div class="checkbox__inner">
+    <div class="checkbox-container">
+      <input type="checkbox" id="online-service" name="online-service">
+    </div>
+    <label class="info-container" for="online-service">
+      <h1 class="title">
+        
+                          Online service
+                        
+      </h1>
+      <p class="description">
+        
+                          Access to multiplayer games
+                        
+      </p>
+    </label>
+    <div class="cost-container">
+      <label class="cost" id="cost" for="online-service">
+        +$1/mo
+      </label>
+    </div>
+  </div>
+</div>
+                      <div class="checkbox " data-custom-checkbox>
+  <div class="checkbox__inner">
+    <div class="checkbox-container">
+      <input type="checkbox" id="large-storage" name="large-storage">
+    </div>
+    <label class="info-container" for="large-storage">
+      <h1 class="title">
+        
+                          Larger storage
+                        
+      </h1>
+      <p class="description">
+        
+                          Extra 1TB of cloud save
+                        
+      </p>
+    </label>
+    <div class="cost-container">
+      <label class="cost" id="cost" for="large-storage">
+        +$2/mo
+      </label>
+    </div>
+  </div>
+</div>
+                      <div class="checkbox " data-custom-checkbox>
+  <div class="checkbox__inner">
+    <div class="checkbox-container">
+      <input type="checkbox" id="customizable-profile" name="customizable-profile">
+    </div>
+    <label class="info-container" for="customizable-profile">
+      <h1 class="title">
+        
+                          Customizable profile
+                        
+      </h1>
+      <p class="description">
+        
+                          Custom theme on your profile
+                        
+      </p>
+    </label>
+    <div class="cost-container">
+      <label class="cost" id="cost" for="customizable-profile">
+        +$2/mo
+      </label>
+    </div>
+  </div>
+</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="form__step">
+                    <div class="form__step-header">
+                      <h1 class="form__step-title">Finishing up</h1>
+                      <p class="form__step-description">
+                        Double-check everything looks OK before confirming.
+                      </p>
+                    </div>
+                    <div class="form__step-summary"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="actions__container">
+          <button type="button" data-button-type="prev" class="button" style="visibility: hidden;">Go Back</button>
+          <button type="button" data-button-type="next" class="button button--primary">Next Step</button>
+          <input type="submit" data-button-type="submit" class="button button--primary" value="Confirm" style="display: none;" form="step-form">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    </main>
+  
+
+</body></html>

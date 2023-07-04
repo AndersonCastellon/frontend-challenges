@@ -21,7 +21,8 @@
         cursor: pointer;
     }
 
-    &:hover {
+    &:hover,
+    &--active {
         border-color: $color-blue-ribbon;
         background: $color-very-light-gray;
     }

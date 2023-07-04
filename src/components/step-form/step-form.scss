@@ -302,3 +302,15 @@
 .swiper-slide:not(.swiper-slide-active) {
     visibility: hidden;
 }
+
+.radio-container {
+    @media screen and (min-width: 1024px) {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 1rem;
+
+        .plan-radio-button {
+            margin-bottom: 0;
+        }
+    }
+}

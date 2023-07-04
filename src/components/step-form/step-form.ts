@@ -1,4 +1,4 @@
-const planCosts: any = {
+export const planCosts: any = {
   arcade: {
     monthly: {
       cost: 9,
@@ -31,6 +31,21 @@ const planCosts: any = {
   }
 }
 
+export const addonsCosts: any = {
+  'online-service': {
+    monthly: 1,
+    yearly: 10
+  },
+  'large-storage': {
+    monthly: 2,
+    yearly: 20
+  },
+  'customizable-profile': {
+    monthly: 2,
+    yearly: 20
+  }
+}
+
 /**
  * The function "getPlanInfo" returns the cost data for a given plan ID, either yearly or monthly.
  * @param {string} planId - The `planId` parameter is a string that represents the unique identifier of
@@ -39,7 +54,7 @@ const planCosts: any = {
  * retrieved for yearly or monthly costs.
  * @returns the data object, which contains the cost information for the specified plan.
  */
-function getPlanInfo (planId: string, yearly: boolean) {
+export function getPlanInfo (planId: string, yearly: boolean) {
   const plan = planCosts[planId]
   let data = {}
 
@@ -66,7 +81,11 @@ function getPlanInfo (planId: string, yearly: boolean) {
  * is billed yearly or monthly. If `yearly` is `true`, it means the plan is billed yearly. If `yearly`
  * is `false`, it means the plan is billed monthly.
  */
-function setPlanInfo (planInfo: any, element: HTMLElement, yearly: boolean) {
+export function setPlanInfo (
+  planInfo: any,
+  element: HTMLElement,
+  yearly: boolean
+) {
   const costElement = element.querySelector('#plan-cost') as HTMLElement
   const freeElement = element.querySelector('#free-months') as HTMLElement
 
@@ -87,6 +106,51 @@ function setPlanInfo (planInfo: any, element: HTMLElement, yearly: boolean) {
   }
 }
 
+/**
+ * The function `getAddonCost` returns the cost of an addon based on its ID and whether it is billed
+ * yearly or monthly.
+ * @param {string} addonId - The `addonId` parameter is a string that represents the unique identifier
+ * of an addon.
+ * @param {boolean} yearly - A boolean value indicating whether the cost should be calculated on a
+ * yearly basis or not. If `yearly` is `true`, the function will return the yearly cost of the addon.
+ * If `yearly` is `false` or not provided, the function will return the monthly cost of the addon
+ * @returns the cost of the addon based on the addonId and whether it is yearly or monthly. If yearly
+ * is true, it returns the yearly cost of the addon. Otherwise, it returns the monthly cost of the
+ * addon.
+ */
+export function getAddonCost (addonId: string, yearly: boolean) {
+  const addonInfo = addonsCosts[addonId]
+
+  if (yearly) {
+    return addonInfo.yearly
+  }
+
+  return addonInfo.monthly
+}
+
+/**
+ * The function sets the cost of an addon and updates the corresponding HTML element.
+ * @param {HTMLElement} element - The `element` parameter is an HTML element that represents the
+ * container where the cost will be displayed.
+ * @param {number} cost - The `cost` parameter is a number that represents the cost of an addon.
+ * @param {boolean} yearly - The `yearly` parameter is a boolean value that indicates whether the cost
+ * is for a yearly subscription or a monthly subscription. If `yearly` is `true`, it means the cost is
+ * for a yearly subscription. If `yearly` is `false`, it means the cost is for a
+ */
+export function setAddonCost (
+  element: HTMLElement,
+  cost: number,
+  yearly: boolean
+) {
+  if (element) {
+    const costElement = element.querySelector('#cost') as HTMLElement
+
+    if (costElement) {
+      costElement.innerText = `+$${cost}/${yearly ? 'yr' : 'mo'}`
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const switchBilling = document.querySelector(
     '#switch-billing'
@@ -94,6 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const radios = Array.from(
     document.querySelectorAll('.plan-radio-button')
+  ) as HTMLElement[]
+
+  const addons = Array.from(
+    document.querySelectorAll('.checkbox[data-custom-checkbox]')
   ) as HTMLElement[]
 
   if (switchBilling) {
@@ -105,6 +173,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (planId) {
           const info = getPlanInfo(planId, yearly)
           setPlanInfo(info, planRadio, yearly)
+        }
+      })
+
+      addons.forEach(addon => {
+        const addonId = addon.dataset.checkboxId
+        if (addonId) {
+          const cost = getAddonCost(addonId, yearly)
+          setAddonCost(addon, cost, yearly)
         }
       })
     })

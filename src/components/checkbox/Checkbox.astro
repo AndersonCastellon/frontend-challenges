@@ -9,7 +9,12 @@ type Props = {
 const { id, name, customClasses = "", ...attrs } = Astro.props;
 ---
 
-<div class={`checkbox ${customClasses}`} {...attrs}>
+<div
+  class={`checkbox ${customClasses}`}
+  {...attrs}
+  data-custom-checkbox
+  data-checkbox-id={id}
+>
   <div class="checkbox__inner">
     <div class="checkbox-container">
       <input type="checkbox" id={id} name={name} />
@@ -29,3 +34,28 @@ const { id, name, customClasses = "", ...attrs } = Astro.props;
     </div>
   </div>
 </div>
+<script>
+  const activeClass = "checkbox--active";
+  document.addEventListener("DOMContentLoaded", () => {
+    const customCheckboxes = document.querySelectorAll(
+      "[data-custom-checkbox]"
+    );
+
+    customCheckboxes.forEach((checkbox) => {
+      const input = checkbox.querySelector(
+        "input[type=checkbox]"
+      ) as HTMLInputElement;
+
+      if (input) {
+        input.addEventListener("change", () => {
+          const checked = input.checked;
+          if (checked) {
+            checkbox.classList.add(activeClass);
+          } else {
+            checkbox.classList.remove(activeClass);
+          }
+        });
+      }
+    });
+  });
+</script>

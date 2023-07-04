@@ -168,48 +168,51 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       </p>
                     </div>
                     <div class="form__step-controls">
-                      <PlanRadioButton
-                        id="arcade"
-                        name="plan"
-                        value="arcade"
-                        icon="/assets/images/icon-arcade.svg"
-                        customClasses="form__control"
-                        data-touched="false"
-                        data-required="true"
-                        data-is-valid="false"
-                      >
-                        <Fragment slot="plan-name">Arcade</Fragment>
-                        <Fragment slot="plan-cost">$9/mo</Fragment>
-                        <Fragment slot="plan-free">2 months free</Fragment>
-                      </PlanRadioButton>
-                      <PlanRadioButton
-                        id="advanced"
-                        name="plan"
-                        value="advanced"
-                        icon="/assets/images/icon-advanced.svg"
-                        customClasses="form__control"
-                        data-touched="false"
-                        data-required="true"
-                        data-is-valid="false"
-                      >
-                        <Fragment slot="plan-name">Advanced</Fragment>
-                        <Fragment slot="plan-cost">$12/mo</Fragment>
-                        <Fragment slot="plan-free">2 months free</Fragment>
-                      </PlanRadioButton>
-                      <PlanRadioButton
-                        id="pro"
-                        name="plan"
-                        value="pro"
-                        icon="/assets/images/icon-pro.svg"
-                        customClasses="form__control"
-                        data-touched="false"
-                        data-required="true"
-                        data-is-valid="false"
-                      >
-                        <Fragment slot="plan-name">Pro</Fragment>
-                        <Fragment slot="plan-cost">$15/mo</Fragment>
-                        <Fragment slot="plan-free">2 months free</Fragment>
-                      </PlanRadioButton>
+                      <div class="radio-container">
+                        <PlanRadioButton
+                          id="arcade"
+                          name="plan"
+                          value="arcade"
+                          icon="/assets/images/icon-arcade.svg"
+                          customClasses="form__control"
+                          data-touched="false"
+                          data-required="true"
+                          data-is-valid="false"
+                        >
+                          <Fragment slot="plan-name">Arcade</Fragment>
+                          <Fragment slot="plan-cost">$9/mo</Fragment>
+                          <Fragment slot="plan-free">2 months free</Fragment>
+                        </PlanRadioButton>
+                        <PlanRadioButton
+                          id="advanced"
+                          name="plan"
+                          value="advanced"
+                          icon="/assets/images/icon-advanced.svg"
+                          customClasses="form__control"
+                          data-touched="false"
+                          data-required="true"
+                          data-is-valid="false"
+                        >
+                          <Fragment slot="plan-name">Advanced</Fragment>
+                          <Fragment slot="plan-cost">$12/mo</Fragment>
+                          <Fragment slot="plan-free">2 months free</Fragment>
+                        </PlanRadioButton>
+                        <PlanRadioButton
+                          id="pro"
+                          name="plan"
+                          value="pro"
+                          icon="/assets/images/icon-pro.svg"
+                          customClasses="form__control"
+                          data-touched="false"
+                          data-required="true"
+                          data-is-valid="false"
+                        >
+                          <Fragment slot="plan-name">Pro</Fragment>
+                          <Fragment slot="plan-cost">$15/mo</Fragment>
+                          <Fragment slot="plan-free">2 months free</Fragment>
+                        </PlanRadioButton>
+                      </div>
+
                       <Switch
                         id="switch-billing"
                         name="billing"
