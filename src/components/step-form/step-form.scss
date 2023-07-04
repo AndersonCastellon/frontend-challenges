@@ -298,3 +298,7 @@
         }
     }
 }
+
+.swiper-slide:not(.swiper-slide-active) {
+    visibility: hidden;
+}

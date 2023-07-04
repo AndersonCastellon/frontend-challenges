@@ -1,5 +1,8 @@
 ---
 import "./step-form.scss";
+import PlanRadioButton from "../plan-radio-button/PlanRadioButton.astro";
+import Switch from "../switch/Switch.astro";
+import Checkbox from "../checkbox/Checkbox.astro";
 ---
 
 <section class="step-form">
@@ -164,7 +167,61 @@ import "./step-form.scss";
                         You have the option of monthly or yearly billing.
                       </p>
                     </div>
-                    <div class="form__step-controls"></div>
+                    <div class="form__step-controls">
+                      <PlanRadioButton
+                        id="arcade"
+                        name="plan"
+                        value="arcade"
+                        icon="/assets/images/icon-arcade.svg"
+                        customClasses="form__control"
+                        data-touched="false"
+                        data-required="true"
+                        data-is-valid="false"
+                      >
+                        <Fragment slot="plan-name">Arcade</Fragment>
+                        <Fragment slot="plan-cost">$9/mo</Fragment>
+                        <Fragment slot="plan-free">2 months free</Fragment>
+                      </PlanRadioButton>
+                      <PlanRadioButton
+                        id="advanced"
+                        name="plan"
+                        value="advanced"
+                        icon="/assets/images/icon-advanced.svg"
+                        customClasses="form__control"
+                        data-touched="false"
+                        data-required="true"
+                        data-is-valid="false"
+                      >
+                        <Fragment slot="plan-name">Advanced</Fragment>
+                        <Fragment slot="plan-cost">$12/mo</Fragment>
+                        <Fragment slot="plan-free">2 months free</Fragment>
+                      </PlanRadioButton>
+                      <PlanRadioButton
+                        id="pro"
+                        name="plan"
+                        value="pro"
+                        icon="/assets/images/icon-pro.svg"
+                        customClasses="form__control"
+                        data-touched="false"
+                        data-required="true"
+                        data-is-valid="false"
+                      >
+                        <Fragment slot="plan-name">Pro</Fragment>
+                        <Fragment slot="plan-cost">$15/mo</Fragment>
+                        <Fragment slot="plan-free">2 months free</Fragment>
+                      </PlanRadioButton>
+                      <Switch
+                        id="switch-billing"
+                        name="billing"
+                        customClasses="form__control"
+                        data-touched="false"
+                        data-required="true"
+                        data-is-valid="false"
+                      >
+                        <Fragment slot="false-value-label">Monthly</Fragment>
+                        <Fragment slot="true-value-label">Yearly</Fragment>
+                      </Switch>
+                    </div>
                   </div>
                 </div>
                 <div class="swiper-slide">
@@ -175,7 +232,38 @@ import "./step-form.scss";
                         Add-ons help enhance your gaming experience.
                       </p>
                     </div>
-                    <div class="form__step-controls"></div>
+                    <div class="form__step-controls">
+                      <Checkbox id="online-service" name="online-service">
+                        <Fragment slot="checkbox-title">
+                          Online service
+                        </Fragment>
+                        <Fragment slot="checkbox-description">
+                          Access to multiplayer games
+                        </Fragment>
+                        <Fragment slot="checkbox-cost">+$1/mo</Fragment>
+                      </Checkbox>
+                      <Checkbox id="large-storage" name="large-storage">
+                        <Fragment slot="checkbox-title">
+                          Larger storage
+                        </Fragment>
+                        <Fragment slot="checkbox-description">
+                          Extra 1TB of cloud save
+                        </Fragment>
+                        <Fragment slot="checkbox-cost">+$2/mo</Fragment>
+                      </Checkbox>
+                      <Checkbox
+                        id="customizable-profile"
+                        name="customizable-profile"
+                      >
+                        <Fragment slot="checkbox-title">
+                          Customizable profile
+                        </Fragment>
+                        <Fragment slot="checkbox-description">
+                          Custom theme on your profile
+                        </Fragment>
+                        <Fragment slot="checkbox-cost">+$2/mo</Fragment>
+                      </Checkbox>
+                    </div>
                   </div>
                 </div>
                 <div class="swiper-slide">
@@ -218,3 +306,4 @@ import "./step-form.scss";
     </div>
   </div>
 </section>
+<script src="./step-form.ts"></script>
