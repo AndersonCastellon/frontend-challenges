@@ -1,0 +1,50 @@
+---
+import "./switch.scss";
+
+type Props = {
+  id: string;
+  name: string;
+  customClasses?: string;
+};
+const { id, name, customClasses = "", ...attrs } = Astro.props;
+---
+
+<div class={`switch ${customClasses}`} {...attrs}>
+  <div class="switch__inner">
+    <label data-value="false" class="label label__false label--active" for={id}>
+      <slot name="false-value-label" />
+    </label>
+
+    <div class="checkbox-container">
+      <input type="checkbox" id={id} name={name} />
+      <span class="slider slider--round"></span>
+    </div>
+
+    <label data-value="true" class="label label__true" for={id}>
+      <slot name="true-value-label" />
+    </label>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const labels: HTMLElement[] = Array.from(
+      document.querySelectorAll(".switch .label")
+    );
+    const checkbox = document.querySelector(
+      'input[type="checkbox"]'
+    ) as HTMLInputElement;
+
+    if (checkbox && labels && labels.length) {
+      checkbox.addEventListener("change", () => {
+        labels.forEach((label) => {
+          const labelValue = label.dataset.value === "true";
+          if (labelValue === checkbox.checked) {
+            label.classList.add("label--active");
+          } else {
+            label.classList.remove("label--active");
+          }
+        });
+      });
+    }
+  });
+</script>

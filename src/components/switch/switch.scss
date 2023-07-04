@@ -1,0 +1,104 @@
+@import '../../styles//settings/variables';
+
+.switch {
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+    width: 100%;
+    background: $color-very-light-gray;
+    align-items: center;
+    border-radius: .5rem;
+    margin-bottom: 0;
+
+    .switch__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .checkbox-container {
+        position: relative;
+        width: 2.375rem;
+        height: 1.25rem;
+        display: inline-block;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+
+        input[type=checkbox] {
+            border-radius: 0;
+            border: none;
+            display: initial;
+            transform: none;
+            color: initial;
+            opacity: 0;
+
+            position: absolute;
+            cursor: pointer;
+
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+    }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $color-light-blue;
+        -webkit-transition: .4s;
+        transition: .4s;
+
+        &--round {
+            border-radius: 2.125rem;
+
+            &::before {
+                border-radius: 50%;
+            }
+        }
+
+        &::before {
+            position: absolute;
+            content: "";
+            height: .875rem;
+            width: .875rem;
+            left: .125rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+    }
+
+    input:checked+.slider {
+        background-color: $color-denim;
+    }
+
+    input:focus+.slider {
+        box-shadow: 0 0 1px $color-denim;
+    }
+
+    input:checked+.slider:before {
+        $translate-x: calc(100% + .3125rem);
+        -webkit-transform: translate($translate-x, -50%);
+        -ms-transform: translate($translate-x, -50%);
+        transform: translate($translate-x, -50%);
+    }
+
+    .label {
+        font-size: .875rem;
+        font-weight: 500;
+        color: $color-cool-gray;
+
+        &--active {
+            color: $color-denim;
+        }
+    }
+}
