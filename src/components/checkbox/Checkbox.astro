@@ -4,9 +4,10 @@ import "./checkbox.scss";
 type Props = {
   id: string;
   name: string;
+  value: string;
   customClasses?: string;
 };
-const { id, name, customClasses = "", ...attrs } = Astro.props;
+const { id, name, value, customClasses = "", ...attrs } = Astro.props;
 ---
 
 <div
@@ -17,7 +18,7 @@ const { id, name, customClasses = "", ...attrs } = Astro.props;
 >
   <div class="checkbox__inner">
     <div class="checkbox-container">
-      <input type="checkbox" id={id} name={name} />
+      <input type="checkbox" id={id} name={name} value={value} />
     </div>
     <label class="info-container" for={id}>
       <h1 class="title">

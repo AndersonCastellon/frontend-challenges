@@ -4,9 +4,10 @@ import "./switch.scss";
 type Props = {
   id: string;
   name: string;
+  value: string;
   customClasses?: string;
 };
-const { id, name, customClasses = "", ...attrs } = Astro.props;
+const { id, name, value, customClasses = "", ...attrs } = Astro.props;
 ---
 
 <div class={`switch ${customClasses}`} {...attrs}>
@@ -16,7 +17,7 @@ const { id, name, customClasses = "", ...attrs } = Astro.props;
     </label>
 
     <div class="checkbox-container">
-      <input type="checkbox" id={id} name={name} />
+      <input type="checkbox" id={id} name={name} value={value} />
       <span class="slider slider--round"></span>
     </div>
 

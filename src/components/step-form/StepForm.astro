@@ -216,6 +216,7 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       <Switch
                         id="switch-billing"
                         name="billing"
+                        value="monthly"
                         customClasses="form__control"
                         data-touched="false"
                         data-required="true"
@@ -236,7 +237,11 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       </p>
                     </div>
                     <div class="form__step-controls">
-                      <Checkbox id="online-service" name="online-service">
+                      <Checkbox
+                        id="online-service"
+                        name="online-service"
+                        value="1"
+                      >
                         <Fragment slot="checkbox-title">
                           Online service
                         </Fragment>
@@ -245,7 +250,11 @@ import Checkbox from "../checkbox/Checkbox.astro";
                         </Fragment>
                         <Fragment slot="checkbox-cost">+$1/mo</Fragment>
                       </Checkbox>
-                      <Checkbox id="large-storage" name="large-storage">
+                      <Checkbox
+                        id="large-storage"
+                        name="large-storage"
+                        value="2"
+                      >
                         <Fragment slot="checkbox-title">
                           Larger storage
                         </Fragment>
@@ -257,6 +266,7 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       <Checkbox
                         id="customizable-profile"
                         name="customizable-profile"
+                        value="2"
                       >
                         <Fragment slot="checkbox-title">
                           Customizable profile
@@ -277,7 +287,54 @@ import Checkbox from "../checkbox/Checkbox.astro";
                         Double-check everything looks OK before confirming.
                       </p>
                     </div>
-                    <div class="form__step-summary"></div>
+                    <div class="form__step-summary">
+                      <div class="summary">
+                        <div class="summary__inner">
+                          <table class="summary__table">
+                            <tbody>
+                              <tr>
+                                <td colspan="2">
+                                  <div class="selected-plan">
+                                    <p class="selected-plan__name">
+                                      Arcade (Monthly)
+                                    </p>
+                                    <button class="button button--link"
+                                      >Change</button
+                                    >
+                                  </div>
+                                </td>
+                                <td align="right">
+                                  <p class="cost">
+                                    <strong> $9/mo</strong>
+                                  </p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">
+                                  <p class="summary__item">Online service</p>
+                                </td>
+                                <td align="right">
+                                  <p class="cost">+$1/mo</p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">
+                                  <p class="summary__item">Larger storage</p>
+                                </td>
+                                <td align="right">
+                                  <p class="cost">+$2/mo</p>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                        <div class="summary__total">
+                          <p class="summary__item">Total (per month)</p>
+                          <p class="cost cost--total">+$12/mo</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

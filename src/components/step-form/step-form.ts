@@ -145,8 +145,16 @@ export function setAddonCost (
   if (element) {
     const costElement = element.querySelector('#cost') as HTMLElement
 
+    const nativeInput = element.querySelector(
+      'input[type=checkbox]'
+    ) as HTMLInputElement
+
     if (costElement) {
       costElement.innerText = `+$${cost}/${yearly ? 'yr' : 'mo'}`
+    }
+
+    if (nativeInput) {
+      nativeInput.value = cost.toString()
     }
   }
 }
@@ -167,6 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (switchBilling) {
     switchBilling.addEventListener('change', () => {
       const yearly = switchBilling.checked
+
+      switchBilling.value = yearly ? 'yearly' : 'monthly'
 
       radios.forEach(planRadio => {
         const planId = planRadio.dataset.plan
