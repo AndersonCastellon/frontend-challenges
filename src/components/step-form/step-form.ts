@@ -1,4 +1,5 @@
 import Swiper from 'swiper'
+let swiperInstance: Swiper
 
 export const planCosts: any = {
   arcade: {
@@ -183,6 +184,10 @@ export function calcSummaryTotal (inputs: HTMLInputElement[]) {
   return inputs.map(input => +input.value).reduce((prev, acc) => prev + acc, 0)
 }
 
+/**
+ * The `getSummary` function retrieves data from a form and updates a summary section with the selected
+ * plan, add-ons, and total cost.
+ */
 export function getSummary () {
   try {
     const form = document.querySelector('.step-form form') as HTMLFormElement
@@ -247,6 +252,15 @@ export function getSummary () {
       '.summary__total .cost--total'
     ) as HTMLElement
     totalElement.innerText = `+${costToString(total, yearly)}`
+
+    if (swiperInstance) {
+      const changeSelectedPlanButton = summaryElement.querySelector(
+        '.button--link'
+      ) as HTMLButtonElement
+      changeSelectedPlanButton.addEventListener('click', () => {
+        swiperInstance.slideTo(1)
+      })
+    }
   } catch (error) {
     console.log(error)
   }
@@ -292,12 +306,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const swiperElement = document.querySelector('.form__swiper') as any
 
   if (swiperElement) {
-    const swiperInstance: Swiper = swiperElement.swiper
+    swiperInstance = swiperElement.swiper
 
     if (swiperInstance) {
       swiperInstance.on('activeIndexChange', swiper => {
-        console.log(swiper)
-
         if (swiper.activeIndex === 3) {
           getSummary()
         }

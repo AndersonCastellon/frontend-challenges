@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   formSwiper.on('activeIndexChange', swiper => {
     setActiveStep(swiper.activeIndex + 1)
+    setButtonStates()
   })
 
   addEventListeners()
