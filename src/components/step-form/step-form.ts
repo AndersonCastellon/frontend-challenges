@@ -253,6 +253,7 @@ export function getSummary () {
     ) as HTMLElement
     totalElement.innerText = `+${costToString(total, yearly)}`
 
+    // Add change button click listener
     if (swiperInstance) {
       const changeSelectedPlanButton = summaryElement.querySelector(
         '.button--link'
@@ -261,6 +262,32 @@ export function getSummary () {
         swiperInstance.slideTo(1)
       })
     }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function showThankYouPage () {
+  try {
+    const submit = document.querySelector(
+      'input[type=submit]'
+    ) as HTMLInputElement
+    const template = document.querySelector(
+      '#thank-you-view-template'
+    ) as HTMLTemplateElement
+    const container = document.querySelector('#last-slide') as HTMLElement
+    const actions = document.querySelector('.actions__container') as HTMLElement
+
+    submit?.addEventListener('click', () => {
+      const view = template.content.cloneNode(true)
+      const children = Array.from(container.children)
+      children.forEach(child => {
+        container.removeChild(child)
+      })
+
+      container.appendChild(view)
+      actions.parentElement?.removeChild(actions)
+    })
   } catch (error) {
     console.log(error)
   }
@@ -312,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
       swiperInstance.on('activeIndexChange', swiper => {
         if (swiper.activeIndex === 3) {
           getSummary()
+          showThankYouPage()
         }
       })
     }

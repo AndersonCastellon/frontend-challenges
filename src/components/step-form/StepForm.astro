@@ -285,7 +285,7 @@ import Checkbox from "../checkbox/Checkbox.astro";
                     </div>
                   </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" id="last-slide">
                   <div class="form__step">
                     <div class="form__step-header">
                       <h1 class="form__step-title">Finishing up</h1>
@@ -371,4 +371,19 @@ import Checkbox from "../checkbox/Checkbox.astro";
     </div>
   </div>
 </section>
+<template id="thank-you-view-template">
+  <div class="thankyou-view">
+    <img
+      class="thankyou-view__icon"
+      src="/assets/images/icon-thank-you.svg"
+      alt=""
+    />
+    <h1 class="thankyou-view__title">Thank you!</h1>
+    <p class="thankyou-view__message">
+      Thanks for confirming your subscription! We hope you have fun using our
+      platform. If you ever need support, please feel free to email us at
+      support@loremgaming.com.
+    </p>
+  </div>
+</template>
 <script src="./step-form.ts"></script>
