@@ -171,8 +171,9 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       <div class="radio-container">
                         <PlanRadioButton
                           id="arcade"
+                          placeholder="Arcade"
                           name="plan"
-                          value="arcade"
+                          value="9"
                           icon="/assets/images/icon-arcade.svg"
                           customClasses="form__control"
                           data-touched="false"
@@ -185,8 +186,9 @@ import Checkbox from "../checkbox/Checkbox.astro";
                         </PlanRadioButton>
                         <PlanRadioButton
                           id="advanced"
+                          placeholder="Advanced"
                           name="plan"
-                          value="advanced"
+                          value="12"
                           icon="/assets/images/icon-advanced.svg"
                           customClasses="form__control"
                           data-touched="false"
@@ -199,8 +201,9 @@ import Checkbox from "../checkbox/Checkbox.astro";
                         </PlanRadioButton>
                         <PlanRadioButton
                           id="pro"
+                          placeholder="Pro"
                           name="plan"
-                          value="pro"
+                          value="15"
                           icon="/assets/images/icon-pro.svg"
                           customClasses="form__control"
                           data-touched="false"
@@ -240,6 +243,7 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       <Checkbox
                         id="online-service"
                         name="online-service"
+                        placeholder="Online service"
                         value="1"
                       >
                         <Fragment slot="checkbox-title">
@@ -253,6 +257,7 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       <Checkbox
                         id="large-storage"
                         name="large-storage"
+                        placeholder="Large storage"
                         value="2"
                       >
                         <Fragment slot="checkbox-title">
@@ -266,6 +271,7 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       <Checkbox
                         id="customizable-profile"
                         name="customizable-profile"
+                        placeholder="Customizable profile"
                         value="2"
                       >
                         <Fragment slot="checkbox-title">
@@ -291,7 +297,7 @@ import Checkbox from "../checkbox/Checkbox.astro";
                       <div class="summary">
                         <div class="summary__inner">
                           <table class="summary__table">
-                            <tbody>
+                            <tbody id="summary-table-body">
                               <tr>
                                 <td colspan="2">
                                   <div class="selected-plan">
@@ -304,27 +310,26 @@ import Checkbox from "../checkbox/Checkbox.astro";
                                   </div>
                                 </td>
                                 <td align="right">
-                                  <p class="cost">
+                                  <p class="cost selected-plan__cost">
                                     <strong> $9/mo</strong>
                                   </p>
                                 </td>
                               </tr>
-                              <tr>
-                                <td colspan="2">
-                                  <p class="summary__item">Online service</p>
-                                </td>
-                                <td align="right">
-                                  <p class="cost">+$1/mo</p>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td colspan="2">
-                                  <p class="summary__item">Larger storage</p>
-                                </td>
-                                <td align="right">
-                                  <p class="cost">+$2/mo</p>
-                                </td>
-                              </tr>
+
+                              <template id="summary-row-template">
+                                <tr class="summary__item-row">
+                                  <td colspan="2">
+                                    <p class="summary__item" id="summary-item">
+                                      Larger storage
+                                    </p>
+                                  </td>
+                                  <td align="right">
+                                    <p class="cost" id="summary-item-cost">
+                                      +$2/mo
+                                    </p>
+                                  </td>
+                                </tr>
+                              </template>
                             </tbody>
                           </table>
                         </div>

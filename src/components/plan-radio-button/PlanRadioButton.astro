@@ -5,13 +5,28 @@ type Props = {
   name: string;
   value: string;
   icon?: string;
+  placeholder?: string;
   customClasses?: string;
 };
-const { id, name, value, icon, customClasses = "", ...attrs } = Astro.props;
+const {
+  id,
+  name,
+  value,
+  icon,
+  placeholder = "",
+  customClasses = "",
+  ...attrs
+} = Astro.props;
 ---
 
 <div class={`plan-radio-button ${customClasses}`} data-plan={id} {...attrs}>
-  <input type="radio" id={id} name={name} value={value} />
+  <input
+    type="radio"
+    id={id}
+    name={name}
+    value={value}
+    placeholder={placeholder}
+  />
   <div class="plan__inner">
     <div class="plan__icon-container">
       <img class="plan__icon" src={icon || ""} alt="Icon" />

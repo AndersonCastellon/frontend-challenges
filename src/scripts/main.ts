@@ -115,7 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loop: false,
     autoHeight: true,
     centeredSlides: true,
-    direction: 'horizontal'
+    direction: 'horizontal',
+    observer: true,
+    mousewheel: false
   })
 
   formSwiper.on('activeIndexChange', swiper => {

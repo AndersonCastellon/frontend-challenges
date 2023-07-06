@@ -1,3 +1,5 @@
+import Swiper from 'swiper'
+
 export const planCosts: any = {
   arcade: {
     monthly: {
@@ -46,6 +48,10 @@ export const addonsCosts: any = {
   }
 }
 
+export function costToString (cost: number, yearly: boolean) {
+  return `$${cost}/${yearly ? 'yr' : 'mo'}`
+}
+
 /**
  * The function "getPlanInfo" returns the cost data for a given plan ID, either yearly or monthly.
  * @param {string} planId - The `planId` parameter is a string that represents the unique identifier of
@@ -89,9 +95,17 @@ export function setPlanInfo (
   const costElement = element.querySelector('#plan-cost') as HTMLElement
   const freeElement = element.querySelector('#free-months') as HTMLElement
 
+  const nativeInput = element.querySelector(
+    'input[type=radio]'
+  ) as HTMLInputElement
+
   if (costElement) {
     const cost: number = planInfo.cost || 0
-    costElement.innerText = `${cost}/${yearly ? 'yr' : 'mo'}`
+    costElement.innerText = costToString(cost, yearly)
+
+    if (nativeInput) {
+      nativeInput.value = `${cost}`
+    }
   }
 
   if (freeElement) {
@@ -150,12 +164,91 @@ export function setAddonCost (
     ) as HTMLInputElement
 
     if (costElement) {
-      costElement.innerText = `+$${cost}/${yearly ? 'yr' : 'mo'}`
+      costElement.innerText = `+${costToString(cost, yearly)}`
     }
 
     if (nativeInput) {
       nativeInput.value = cost.toString()
     }
+  }
+}
+
+/**
+ * The function `calcSummaryTotal` calculates the total sum of values from an array of HTML input
+ * elements.
+ * @param {HTMLInputElement[]} inputs - An array of HTML input elements.
+ * @returns the sum of the values of the HTML input elements passed in the `inputs` array.
+ */
+export function calcSummaryTotal (inputs: HTMLInputElement[]) {
+  return inputs.map(input => +input.value).reduce((prev, acc) => prev + acc, 0)
+}
+
+export function getSummary () {
+  try {
+    const form = document.querySelector('.step-form form') as HTMLFormElement
+    const switchBilling = form?.querySelector(
+      '#switch-billing'
+    ) as HTMLInputElement
+    const summaryElement = document.querySelector('.summary') as HTMLElement
+    const selectedPlanNameElement = summaryElement.querySelector(
+      '.selected-plan__name'
+    ) as HTMLElement
+    const selectedPlanCostElement = summaryElement.querySelector(
+      '.selected-plan__cost'
+    ) as HTMLElement
+    const selectedPlanInput = form?.querySelector(
+      'input[type=radio][name=plan]:checked'
+    ) as HTMLInputElement
+
+    const summaryTableBody = summaryElement.querySelector('#summary-table-body')
+
+    const addonInputs = form.querySelectorAll<HTMLInputElement>(
+      '[data-custom-checkbox] input[type=checkbox]:checked'
+    )
+
+    const yearly = switchBilling.value === 'yearly'
+
+    //Set selected plan name
+    selectedPlanNameElement.innerText = `${selectedPlanInput.placeholder} (${
+      yearly ? 'Yearly' : 'Monthly'
+    })`
+    selectedPlanCostElement.innerHTML = `
+    <strong>
+    ${costToString(+selectedPlanInput.value, yearly)}
+    </strong>
+    `
+
+    //Set selected add-ons
+    const oldRows =
+      summaryElement.querySelectorAll<HTMLElement>('.summary__item-row')
+
+    oldRows.forEach(row => {
+      row.parentElement?.removeChild(row)
+    })
+
+    addonInputs.forEach(addonInput => {
+      const template = summaryElement.querySelector(
+        '#summary-row-template'
+      ) as HTMLTemplateElement
+      const row = template.content.cloneNode(true) as HTMLTableRowElement
+      const item = row.querySelector('#summary-item') as HTMLElement
+      const cost = row.querySelector('#summary-item-cost') as HTMLElement
+
+      item.innerText = addonInput.placeholder
+      cost.innerText = costToString(+addonInput.value, yearly)
+
+      summaryTableBody?.appendChild(row)
+    })
+
+    // set summary total
+    const total = calcSummaryTotal([...addonInputs, selectedPlanInput])
+
+    const totalElement = summaryElement.querySelector(
+      '.summary__total .cost--total'
+    ) as HTMLElement
+    totalElement.innerText = `+${costToString(total, yearly)}`
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -194,5 +287,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
     })
+  }
+
+  const swiperElement = document.querySelector('.form__swiper') as any
+
+  if (swiperElement) {
+    const swiperInstance: Swiper = swiperElement.swiper
+
+    if (swiperInstance) {
+      swiperInstance.on('activeIndexChange', swiper => {
+        console.log(swiper)
+
+        if (swiper.activeIndex === 3) {
+          getSummary()
+        }
+      })
+    }
   }
 })
